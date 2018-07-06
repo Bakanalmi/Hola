@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang = 'es-ES'>
+	<head>
+		<meta charset = 'UTF-8'>
+		<title> Finding Methodes </title>
+		<!-- Hola que hace -->
+	</head>
+	<body>
+		<div class="first"></div>
+		<div class="second"></div>
+		<div class="second"></div>
+		<div></div>
+		<script type="text/javascript">
+			var x = document.getElementsByTagName("div");
+			for (var i = 0; i < x.length; ++i) {
+				if (i == 0) x[i].innerHTML = "FIRST";
+				else if (i == 3) x[i].innerHTML = "TERCER";
+				else x[i].innerHTML = "SEGON";
+			}
+		</script>
+	</body>
+</html>
