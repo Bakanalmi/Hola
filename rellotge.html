@@ -1,15 +1,59 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset = 'UTF-8'>
+		<title> Rellotge </title>
+		<link rel="stylesheet" type="text/css" href="rellotge.css">
+	</head>
 	<body>
-		<p id="rellotge"></p>
-
+		<div class="rellotge">
+			<div id="alarma" class="rellotge">00:00</div>
+			<div class="rellotge">
+				<div id="min">00</div>
+				<div id="punts">:</div>
+				<div id="seg">00</div>
+			</div>
+		</div>
+		<button onclick="myFunction()">botó</button>
 		<script>
-			var myVar = setInterval(myTimer, 1000);
+			var minuts;
+			var segons;
+			var inter;
+			function myFunction() {
+				var temps = prompt("Temps", "****");
+				if (temps != null) {
+					minuts = Math.trunc(temps/60);
+					segons = Math.trunc(temps%60);
+					if (minuts < 10) {
+						minuts = "0" + minuts;
+					}
+					if (segons < 10) {
+						segons = "0" + segons;
+					}
+					document.getElementById("alarma").innerHTML = minuts + ":" + segons;
+					inter = setInterval(myTimer, 1000);
+				}
+			}
 
 			function myTimer() {
-				var d = new Date();
-				var t = d.toLocaleTimeString();
-				document.getElementById("rellotge").innerHTML = t;
+				var s = document.getElementById("seg");
+				var m = document.getElementById("min");
+				s.innerHTML++;
+				if (s.innerHTML < 10) {document.getElementById("seg").innerHTML = "0" + s.innerHTML;}
+				else if (s.innerHTML >= 10){document.getElementById("seg").innerHTML = s.innerHTML;}
+				if (s.innerHTML%60 == 0) {
+					document.getElementById("seg").innerHTML = "00";
+					++m.innerHTML;
+					if (m.innerHTML < 10) {document.getElementById("min").innerHTML = "0" + m.innerHTML;}
+					else if (m.innerHTML >= 10) {document.getElementById("min").innerHTML = m.innerHTML;}
+					if (m.innerHTML%60 == 0) {
+						document.getElementById("min").innerHTML = "00";
+					}
+				}
+				if (s.innerText == segons && m.innerText == minuts) {
+					clearInterval(inter);
+					alert('ALARMA!!!');
+				}
 			}
 		</script>
 	</body>
