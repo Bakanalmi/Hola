@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = 'UTF-8'>
+	</head>
+	<body>
+		<p>Clica el botó i mira que passa.</p>
+		<button onclick="myFunction()">botó</button>
+		<p id="nom"></p>
+		<script>
+			function myFunction() {
+				var persona = prompt("Nom", "Pepito de la calzada");
+				if (persona != null) {
+					document.getElementById("nom").innerHTML =
+					"Hola " + persona + ", que tal estas?";
+				}
+			}
+		</script>
+	</body>
+</html>
